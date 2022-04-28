@@ -1,2 +1,2 @@
-# QA-git
- 
+- Some exercises from different courses
+    - Linkedin Learning. Robot Framework Test Automation: Level 1 (Selenium) - https://github.com/Alex-Sky-Q/QA-git/tree/master/Robot_Framework/Ozon_Tests
