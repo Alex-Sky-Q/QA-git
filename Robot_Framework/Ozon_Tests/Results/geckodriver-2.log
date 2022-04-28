@@ -1,0 +1,21 @@
+1651162966429	geckodriver	INFO	Listening on 127.0.0.1:9330
+1651162969502	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "9331" "-no-remote" "-profile" "C:\\Users\\AK\\AppData\\Local\\Temp\\rust_mozprofileOKlAxM"
+1651162969795	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\AK\\AppData\\Local\\Temp\\rust_mozprofileOKlAxM\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:9331/devtools/browser/9065c0ca-d678-491e-95eb-8f1e63615423
+1651162971416	Marionette	INFO	Listening on port 9336
+1651162971530	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1651162971678	Marionette	INFO	Stopped listening on port 9336
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+!!! error running onStopped callback: TypeError: callback is not a function
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1651162971990	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 64"  data: no] Stack trace: stop()@TargetObserver.jsm:64
+unwatchForTabs()@TargetList.jsm:70
+unwatchForTargets()@TargetList.jsm:37
+destructor()@TargetList.jsm:109
+stop()@CDP.jsm:104
+close()@RemoteAgent.jsm:138
