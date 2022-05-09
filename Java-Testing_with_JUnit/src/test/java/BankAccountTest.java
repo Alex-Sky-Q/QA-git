@@ -1,13 +1,18 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
+//@Execution(ExecutionMode.CONCURRENT)
 @DisplayName("Test BankAccount methods")
 @ExtendWith(BankAccountParamResolver.class)
 public class BankAccountTest {
@@ -80,6 +85,7 @@ public class BankAccountTest {
     }
 
     @Test
+    @Timeout(value = 1000, unit = TimeUnit.MILLISECONDS)
     @DisplayName("Account is active")
     public void testIsActive(BankAccount bankAccount) {
         assertTrue(bankAccount.isActive());
