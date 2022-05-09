@@ -1,10 +1,16 @@
 public class BankAccount {
     private double balance;
     private double minBalance;
+    private boolean isActive;
 
     public BankAccount(double balance, double minBalance) {
         this.balance = balance;
         this.minBalance = minBalance;
+        this.isActive = true;
+    }
+
+    public boolean isActive() {
+        return isActive;
     }
 
     public double getBalance() {
