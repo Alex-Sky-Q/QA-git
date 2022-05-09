@@ -1,6 +1,4 @@
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
@@ -84,11 +82,11 @@ public class BankAccountTest {
 
     @Nested
     class PerformanceTest {
-        @Test
-        @DisplayName("Withdraw is fast enough")
-        public void testTimeOut() {
-            BankAccount bankAccount = new BankAccount(500, 0);
-            assertTimeout(Duration.ofMillis(10), () -> bankAccount.withdraw(500));
+        @RepeatedTest(3)
+        @DisplayName("Deposit is fast enough")
+        public void testTimeOut(BankAccount bankAccount, RepetitionInfo repetitionInfo) {
+            assertTimeout(Duration.ofMillis(10), () -> bankAccount.deposit(500));
+            System.out.println(repetitionInfo.getCurrentRepetition() + " - " + bankAccount.getBalance());
         }
     }
 }
