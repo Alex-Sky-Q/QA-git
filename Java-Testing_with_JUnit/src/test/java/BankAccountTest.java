@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
@@ -7,14 +10,12 @@ import static org.junit.jupiter.api.Assumptions.*;
 @DisplayName("Test BankAccount methods")
 @ExtendWith(BankAccountParamResolver.class)
 public class BankAccountTest {
-    @Test
+    @ParameterizedTest
+    @ValueSource(doubles = {100, 300.5, 0, -100})
     @DisplayName("Deposit to a non-empty account")
-    public void testDeposit() {
-        double balance = 500;
-        double depAmount = 500;
-        BankAccount bankAccount = new BankAccount(balance, 0);
+    public void testDeposit(double depAmount, BankAccount bankAccount) {
         bankAccount.deposit(depAmount);
-        assertEquals(depAmount + balance, bankAccount.getBalance());
+        assertEquals(depAmount, bankAccount.getBalance());
     }
 
     @Test
