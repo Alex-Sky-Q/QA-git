@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 @DisplayName("Test BankAccount methods")
 public class BankAccountTest {
@@ -60,6 +61,7 @@ public class BankAccountTest {
         double depAmount = 500;
         double withdrawAmount = 300;
         BankAccount bankAccount = new BankAccount(0, minBalance);
+        assumeTrue(bankAccount != null, "Account is null");
         assertAll(() -> bankAccount.setHolderName("Tracy"), ()-> bankAccount.deposit(depAmount),
                 () -> bankAccount.withdraw(withdrawAmount));
     }
@@ -76,7 +78,7 @@ public class BankAccountTest {
     public void testHolderName() {
         BankAccount bankAccount = new BankAccount(500, 0);
         bankAccount.setHolderName("Travis");
-        assertNotNull(bankAccount.getHolderName());
+        assumingThat(bankAccount.isActive(), () -> assertNotNull(bankAccount.getHolderName()));
     }
 
     @Test
