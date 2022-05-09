@@ -2,15 +2,24 @@ public class BankAccount {
     private double balance;
     private double minBalance;
     private boolean isActive;
+    private String holderName;
 
     public BankAccount(double balance, double minBalance) {
         this.balance = balance;
         this.minBalance = minBalance;
-        this.isActive = true;
+        isActive = true;
     }
 
     public boolean isActive() {
         return isActive;
+    }
+
+    public String getHolderName() {
+        return holderName;
+    }
+
+    public void setHolderName(String holderName) {
+        this.holderName = holderName;
     }
 
     public double getBalance() {
@@ -26,6 +35,11 @@ public class BankAccount {
     }
 
     public double withdraw(double amount) {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (balance - amount >= minBalance) {
             return balance -= amount;
         }
