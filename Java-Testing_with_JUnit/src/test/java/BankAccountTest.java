@@ -1,11 +1,13 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.*;
 
 @DisplayName("Test BankAccount methods")
+@ExtendWith(BankAccountParamResolver.class)
 public class BankAccountTest {
     @Test
     @DisplayName("Deposit to a non-empty account")
@@ -69,15 +71,13 @@ public class BankAccountTest {
 
     @Test
     @DisplayName("Account is active")
-    public void testIsActive() {
-        BankAccount bankAccount = new BankAccount(500, 0);
+    public void testIsActive(BankAccount bankAccount) {
         assertTrue(bankAccount.isActive());
     }
 
     @Test
     @DisplayName("Holder name is not null")
-    public void testHolderName() {
-        BankAccount bankAccount = new BankAccount(500, 0);
+    public void testHolderName(BankAccount bankAccount) {
         bankAccount.setHolderName("Travis");
         assumingThat(bankAccount.isActive(), () -> assertNotNull(bankAccount.getHolderName()));
     }
