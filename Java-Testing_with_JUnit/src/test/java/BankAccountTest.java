@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.Duration;
@@ -10,6 +11,16 @@ import static org.junit.jupiter.api.Assumptions.*;
 @DisplayName("Test BankAccount methods")
 @ExtendWith(BankAccountParamResolver.class)
 public class BankAccountTest {
+    @ParameterizedTest
+    @CsvFileSource(resources = "name-amount.csv")
+    @DisplayName("Deposit and set name")
+    public void testDepositSetName(String name, Double depAmount, BankAccount bankAccount) {
+        bankAccount.setHolderName(name);
+        bankAccount.deposit(depAmount);
+        assertEquals(name, bankAccount.getHolderName());
+        assertEquals(depAmount, bankAccount.getBalance());
+    }
+
     @ParameterizedTest
     @ValueSource(doubles = {100, 300.5, 0, -100})
     @DisplayName("Deposit to a non-empty account")
