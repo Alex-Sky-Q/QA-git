@@ -26,12 +26,33 @@ public class BankAccountTest {
     }
 
     @Test
+    @DisplayName("Balance can go below 0")
+    public void testWithdrawBelowZero() {
+        double balance = 500;
+        double withdrawAmount = 600;
+        BankAccount bankAccount = new BankAccount(balance, -1000);
+        assertNotEquals(0, bankAccount.withdraw(withdrawAmount));
+    }
+
+    @Test
     @DisplayName("Cannot withdraw more than minBalance")
     public void testWithdrawMoreThanMin() {
         double balance = 500;
         double withdrawAmount = 600;
         BankAccount bankAccount = new BankAccount(balance, 0);
-        assertThrows(RuntimeException.class, () -> bankAccount.withdraw(withdrawAmount));
+        assertThrows(RuntimeException.class, () -> bankAccount.withdraw(withdrawAmount),
+                "Exception was not thrown");
+    }
+
+    @Test
+    @DisplayName("End-to-end process is successful")
+    public void testEndToEnd() {
+        double minBalance = 0;
+        double depAmount = 500;
+        double withdrawAmount = 300;
+        BankAccount bankAccount = new BankAccount(0, minBalance);
+        assertAll(() -> bankAccount.setHolderName("Tracy"), ()-> bankAccount.deposit(depAmount),
+                () -> bankAccount.withdraw(withdrawAmount));
     }
 
     @Test
