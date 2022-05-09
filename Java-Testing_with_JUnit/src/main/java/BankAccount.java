@@ -48,4 +48,8 @@ public class BankAccount {
         }
     }
 
+    public double splitAccountBalance(int parts) {
+        return balance /= parts;
+    }
+
 }

@@ -45,6 +45,15 @@ public class BankAccountTest {
     }
 
     @Test
+    @DisplayName("Split account balance")
+    public void testSplitAccount() {
+        double balance = 10;
+        int parts = 3;
+        BankAccount bankAccount = new BankAccount(balance, 0);
+        assertEquals(3.33, bankAccount.splitAccountBalance(parts), 0.01);
+    }
+
+    @Test
     @DisplayName("End-to-end process is successful")
     public void testEndToEnd() {
         double minBalance = 0;
