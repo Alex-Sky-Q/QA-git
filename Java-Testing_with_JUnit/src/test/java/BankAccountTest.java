@@ -92,6 +92,7 @@ public class BankAccountTest {
     }
 
     @Test
+    @Disabled("Just for testing purpose")
     @DisplayName("Holder name is not null")
     public void testHolderName(BankAccount bankAccount) {
         bankAccount.setHolderName("Travis");
