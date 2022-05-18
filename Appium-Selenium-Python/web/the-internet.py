@@ -27,5 +27,10 @@ try:
 
     assert 'Action' in flash.text
 
+    driver.back()
+    wait.until(ec.presence_of_element_located((By.LINK_TEXT, 'Form Authentication'))).click()
+
+    wait.until(ec.presence_of_element_located((By.TAG_NAME, 'button[type=submit]'))).click()
+
 finally:
     driver.quit()
