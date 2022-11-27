@@ -1,4 +1,0 @@
-{"tag":"grpc_ListDevices", "call": "ozonmp.act_device_api.v1.ActDeviceApiService.ListDevicesV1", "payload": {"page": 1, "per_page": 10}}
-{"tag":"grpc_CreateDevice", "call": "ozonmp.act_device_api.v1.ActDeviceApiService.CreateDeviceV1", "payload": {"platform": "android", "user_id": 15}}
-{"tag":"grpc_DescribeDevice", "call": "ozonmp.act_device_api.v1.ActDeviceApiService.DescribeDeviceV1", "payload": {"device_id": 8}}
-{"tag":"grpc_UpdateDevice", "call": "ozonmp.act_device_api.v1.ActDeviceApiService.UpdateDeviceV1", "payload": {"device_id": 8, "platform": "tv", "user_id": 25}}
